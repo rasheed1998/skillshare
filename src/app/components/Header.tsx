@@ -53,11 +53,11 @@ export default function Header() {
               <button onClick={() => toggle('tasks')}>Tasks ▾</button>
               {open === 'tasks' && (
                 <ul className="absolute bg-white text-black p-2 rounded shadow space-y-2 z-10 w-[160px]">
-                  <li><Link href="/tasks/create" onClick={handleClose}>Create Task</Link></li>
+                  {/* <li><Link href="/tasks/create" onClick={handleClose}>Create Task</Link></li>
                   <li><Link href="/tasks/update" onClick={handleClose}>Update Task</Link></li>
                   <li><Link href="/tasks/progress" onClick={handleClose}>Update Progress</Link></li>
                   <li><Link href="/tasks/complete" onClick={handleClose}>Mark Complete</Link></li>
-                  <li><Link href="/tasks/review-completion" onClick={handleClose}>Review Completion</Link></li>
+                  <li><Link href="/tasks/review-completion" onClick={handleClose}>Review Completion</Link></li> */}
                 </ul>
               )}
             </div>
@@ -66,8 +66,8 @@ export default function Header() {
               <button onClick={() => toggle('offers')}>Offers ▾</button>
               {open === 'offers' && (
                 <ul className="absolute bg-white text-black p-2 rounded shadow space-y-2 z-10 w-[140px]">
-                  <li><Link href="/offers/create" onClick={handleClose}>Make Offer</Link></li>
-                  <li><Link href="/offers/respond" onClick={handleClose}>Respond to Offer</Link></li>
+                  {/* <li><Link href="/offers/create" onClick={handleClose}>Make Offer</Link></li>
+                  <li><Link href="/offers/respond" onClick={handleClose}>Respond to Offer</Link></li> */}
                 </ul>
               )}
             </div>

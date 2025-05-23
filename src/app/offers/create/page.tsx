@@ -10,7 +10,7 @@ export default function CreateOffer() {
     proposedRate: '',
   });
 
-  if (auth?.role !== 'company') return <p className="text-center mt-8">Only providers can make offers.</p>;
+  // if (auth?.role !== 'company') return <p className="text-center mt-8">Only providers can make offers.</p>;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

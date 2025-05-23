@@ -1,22 +1,28 @@
-'use client';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
+import jwt from 'jsonwebtoken';
 
-import { useAuth } from "../../../contexts/AuthContext";
+export default async function DashboardRedirect() {
+  const cookieStore = await cookies();
+  const token = cookieStore.get('token')?.value;
 
-export default function Dashboard() {
-  const authContext = useAuth();
-
-  if (!authContext?.auth) {
-    return (
-      <div className="flex items-center justify-center h-screen">
-        <p className="text-gray-500">Not authenticated. Please login.</p>
-      </div>
-    );
+  if (!token) {
+    redirect('/login');
   }
 
-  return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <h1 className="text-3xl font-bold">Dashboard</h1>
-      <p className="text-gray-600">Welcome, {authContext.auth.role}</p>
-    </div>
-  );
+  let role = '';
+  try {
+    const decoded: any = jwt.decode(token);
+    role = decoded?.role;
+  } catch (err) {
+    redirect('/login');
+  }
+
+  if (role === 'individual') {
+    redirect('/dashboard/user');
+  } else if (role === 'company') {
+    redirect('/dashboard/provider');
+  } else {
+    redirect('/unauthorized');
+  }
 }
